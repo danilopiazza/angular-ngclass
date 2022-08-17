@@ -1,0 +1,12 @@
+<div class="container">
+  <form>
+    <div class="form-check">
+      <input id="dark-checkbox" type="checkbox" class="form-check-input" name="dark" [(ngModel)]="dark">
+      <label for="dark-checkbox" class="form-check-label">Dark color theme</label>
+    </div>
+    <button id="themed-button" type="button" class="btn btn-lg" [ngClass]="{'btn-light': !dark, 'btn-dark': dark}">
+      <span *ngIf="!dark">Light Button</span>
+      <span *ngIf="dark">Dark Button</span>
+    </button>
+  </form>
+</div>

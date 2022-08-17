@@ -16,16 +16,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-ngclass'`, () => {
+  it(`should initialize dark to false`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-ngclass');
+    expect(app.dark).toBeFalse();
   });
 
-  it('should render title', () => {
+  it('should render a light button when unchecked', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-ngclass app is running!');
+    expect(compiled.querySelector('#themed-button')?.textContent).toContain('Light Button');
+  });
+
+  it('should render a dark button when checked', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.dark = true;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('#themed-button')?.textContent).toContain('Dark Button');
   });
 });
